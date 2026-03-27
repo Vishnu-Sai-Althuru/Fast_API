@@ -1,0 +1,4 @@
+AI is artificial intelligence.
+Machine learning is a subset of AI.
+FastAPI is used for building APIs in Python.
+FAISS is used for vector similarity search.

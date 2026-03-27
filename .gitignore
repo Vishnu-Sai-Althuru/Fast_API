@@ -1,0 +1,10 @@
+.DS_Store
+.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.vscode/
+venv/
+test.db
+rag-fastapi/.env
+rag-fastapi/test.db

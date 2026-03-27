@@ -1,0 +1,15 @@
+{
+  "venvPath": ".",
+  "venv": "venv",
+  "include": [
+    "rag-fastapi"
+  ],
+  "executionEnvironments": [
+    {
+      "root": "rag-fastapi",
+      "extraPaths": [
+        "rag-fastapi"
+      ]
+    }
+  ]
+}
