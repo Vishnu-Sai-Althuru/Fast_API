@@ -11,7 +11,12 @@ def _build_engine():
     if not settings.DATABASE_URL:
         raise RuntimeError("DATABASE_URL is required and must point to PostgreSQL.")
 
-    engine = create_engine(settings.DATABASE_URL)
+    engine_kwargs = {}
+    if settings.DATABASE_URL.startswith("sqlite"):
+        # Test clients open requests across threads, so SQLite needs this flag for local verification.
+        engine_kwargs["connect_args"] = {"check_same_thread": False}
+
+    engine = create_engine(settings.DATABASE_URL, **engine_kwargs)
     with engine.connect():
         pass
     return engine

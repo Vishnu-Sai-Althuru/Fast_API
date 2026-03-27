@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from fastapi import Depends, HTTPException, status , Depends
+from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from passlib.context import CryptContext
@@ -47,7 +47,8 @@ def verify_token(token: str = Depends(oauth2_scheme)):
 
     except JWTError:
         raise credentials_exception()
-    
+
+
 def require_admin(user=Depends(verify_token)):
     if user["role"] != "admin":
         raise HTTPException(status_code=403, detail="Admin access required")

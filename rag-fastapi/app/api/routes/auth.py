@@ -43,10 +43,9 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
     if not db_user or not verify_password(form_data.password, db_user.password):
         # 401: the client sent bad credentials, so no token is issued.
         raise HTTPException(status_code=401, detail="Invalid credentials")
+
     token = create_access_token({
         "sub": db_user.username,
-        "role": db_user.role
+        "role": db_user.role,
     })
-
-    token = create_access_token({"sub": db_user.username})
     return TokenResponse(access_token=token)
